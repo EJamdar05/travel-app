@@ -28,7 +28,7 @@ function performAction(event){
     getTemp(baseURL, userZipcode, apiKey)
 
     .then(function(data){
-        postData('http://locahost:3000/all', {date:currentDate, temp:data.main.temp, comment: userComment});
+        postData('http://localhost:3000/all', {date:currentDate, temp:data.main.temp, comment: userComment});
         addPost();
     });
 }
@@ -87,7 +87,7 @@ const postData = async(url='', data={})=>{
      added
 */
 const addPost = async()=>{
-    const request = await fetch('http://locahost:3000/add');
+    const request = await fetch('http://localhost:3000/add');
     try{
         const allData = await request.json();
         let unitConversion = ((allData.temp * 9)/5)-459.67;
