@@ -12,7 +12,7 @@ const cors = require('cors');
 const { response } = require('express');
 app.use(cors());
 //accessing the folder where script.js is
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 const serverPort = 3000;
 //server startup
