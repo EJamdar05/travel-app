@@ -5,11 +5,11 @@
     ~Current Date will use date methods to obtain the number values from
     the date
 */
-let baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
-let apiKey = "&appid=683ab2ba4e65e8846a80c2c2e5a7e2fd";
+let apiURL = "https://api.weatherbit.io/v2.0/current?"
+let apiKey = "c949c4d2c7704425847115a98f583bf6";
 const date = new Date();
-const currentDate = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
-
+const currentDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+console.log(currentDate);
 /*
     ~an event listener is added to the generate button that will
     get the users input (zipcode and comment)
@@ -23,12 +23,21 @@ const currentDate = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
 document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(event){
-    const userZipcode = document.getElementById('zip').value;
-    const userComment = document.getElementById('feelings').value;
-    getTemp(baseURL, userZipcode, apiKey)
+    const userCity = document.getElementById('zip').value;
+    const userDate = document.getElementById('feelings').value;
+    const numOfDays = getRemainingDays(userDate);
+    const baseURL = `http://api.geonames.org/searchJSON?formatted=true&q=${userCity}&username=IssacJones2009&style=full`;
+    getTemp(baseURL)
 
     .then(function(data){
-        postData('http://localhost:3000/add', {date:currentDate, temp:data.main.temp, comment: userComment});
+        const lat = data.geonames[0].lat;
+        const long = data.geonames[0].lng;
+        const weatherURL = `${apiURL}&lat=${lat}&lon=${long}&key=${apiKey}`;
+        const weather = getWeather(weatherURL);
+        console.log(weather)
+        postData('http://localhost:3000/add', {latitude: data.geonames[0].lat, longitude: data.geonames[0].lng, 
+                                              country: data.geonames[0].countryName, date: numOfDays,
+                                            temp: weather});
         addPost();
     });
 }
@@ -42,11 +51,35 @@ function performAction(event){
         ~the data is then returned 
     ~if not successful, then the error is logged via the console
 */
-const getTemp = async(url, zip, key)=>{
-    const res = await fetch(url+zip+key);
+const getTemp = async(url)=>{
+    const res = await fetch(url);
     try{
         const data = await res.json();
+        console.log(data);
         return data;
+    }
+    catch(error){
+        console.log(`Error: ${error}`);
+    }
+}
+
+function  getRemainingDays(userDate){
+    const presentDate = new Date(currentDate);
+    const tripDate = new Date(userDate);
+
+    const timeInterval = Math.abs(tripDate - presentDate); //absolute value
+    const daysUntilTrip = Math.ceil(timeInterval / (1000 * 60 * 60 * 24));
+    console.log(daysUntilTrip);
+    return daysUntilTrip;
+
+}
+
+const getWeather = async(url)=>{
+    const res = await fetch(url);
+    try{
+        const weatherData = await res.json();
+        console.log(weatherData.data[0].temp);
+        return weatherData.data[0].temp;
     }
     catch(error){
         console.log(`Error: ${error}`);
@@ -90,10 +123,12 @@ const addPost = async()=>{
     const request = await fetch('http://localhost:3000/all');
     try{
         const allData = await request.json();
-        let unitConversion = ((allData.temp * 9)/5)-459.67;
-        document.getElementById('date').innerHTML = `Date of Post: ${allData.date}`;
-        document.getElementById('temp').innerHTML = `Temperateur from your Zip: ${unitConversion.toFixed(0)} F°`;
-        document.getElementById('content').innerHTML = `Your Thoughts of the day: ${allData.comment}`;
+        var test = JSON.stringify(allData.temp);
+        document.getElementById('date').innerHTML = `Country: ${allData.country}`;
+        document.getElementById('temp').innerHTML = `Longitude: ${allData.longitude}`;
+        document.getElementById('content').innerHTML = `Latitude: ${allData.latitude}`;
+        document.getElementById('days').innerHTML = `Days Remaining: ${allData.date}`;
+        document.getElementById('weather').innerHTML = `Temp: ${test}`;
     }
     catch(error){
         console.log(`Error: ${error}`);

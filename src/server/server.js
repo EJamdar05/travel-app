@@ -34,9 +34,11 @@ app.post('/add', addData); //post route
 function addData(req, res){
     console.log(req.body);
     newEntry = {
-        temp: req.body.temp,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        country: req.body.country,
         date: req.body.date,
-        comment: req.body.comment,
+        temp: req.body.temp,
     }
     projectData = newEntry;
     res.send(projectData);

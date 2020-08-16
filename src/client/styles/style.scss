@@ -5,10 +5,11 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(25px, auto);
     /* grid-template-columns:  */
     height:100vh;
     background: #f23557;
+    border: 2px solid black;
     color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
@@ -55,8 +56,8 @@ label{
 
 input{
     display:block;
-    height: 60px;
-    width: 320px;
+    height: 40px;
+    width: 300px;
     background:#22b2da;
     color: #f0d43a;
     font-size: 20px;
@@ -66,13 +67,14 @@ input{
 
 button{
     width: 400px;
-    height: 100px;
+    height: 60px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
+    position: bottom;
 }
 h1{
     font-size: 36px;
@@ -82,6 +84,7 @@ textarea{
     background:#22b2da;
     color: #f0d43a;
     font-size: 20px;
+    border: 2px solid black;
     font-family: 'Oswald', sans-serif;
 }
 /* Reset style for HTML element on active to have no border*/
