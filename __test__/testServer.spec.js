@@ -1,6 +1,10 @@
-import { serverUp } from '../src/server/server'
+const app = require('../src/server/server.js');
 
-describe("Testing the server functionality", () => {  
-    test("Testing the server function", () => {
-           expect(serverUp).toBeDefined();
-})});
+const supertest = require('supertest')
+const request = supertest(app)
+
+it('Gets the test endpoint', async done => {
+    // Sends GET Request to /test endpoint
+    const res = await request.get('/test')
+    done()
+  })

@@ -17,11 +17,8 @@ app.use(express.static('dist'));
 
 const serverPort = 3000;
 //server startup
-const server = app.listen(serverPort, serverUp);
-function serverUp(){
-    console.log('Server is starting.')
-    console.log(`Server is now running on port: ${serverPort}`);
-}
+//const server = app.listen(serverPort, serverUp);
+
 //the get req when called from the app
 app.get('/all', sendData);
 //data is sent to the client side
@@ -46,3 +43,8 @@ function addData(req, res){
     res.send(projectData);
     console.log(projectData);
 }
+app.get('/test', async (req, res) => {
+    res.json({message: 'pass!'})
+  })
+module.exports = app
+
