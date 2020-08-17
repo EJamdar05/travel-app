@@ -68,6 +68,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #headline {
@@ -131,6 +132,9 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+button:hover{
+    background-color: #2E8B57;
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 

@@ -20,6 +20,9 @@
         margin-right: 100px;
         width: 400px; //change
     }
+    #headline{
+        margin-left: 35px;
+    }
             
 }
 @media(min-width: 600px) and (max-width: 1100px){   
@@ -32,7 +35,7 @@
     
     }
     #app{
-        grid-auto-rows: 180px 180px 190px;
+        grid-auto-rows: minmax(50px, 250px, 50px auto);
         /* grid-template-columns:  */
         justify-content: space-evenly;
         margin-left: 100px; //chnahe 
@@ -41,10 +44,9 @@
     
     .holder{
         justify-content: center;
-        border: 10px dashed orange;
-        height: 200px;
-        width:750px;
-        margin-left: 100px; //change
+        height: 100px;
+        width:500px;
+        margin-left: 175px; //change
         
         margin-right: 200px;
     }
@@ -53,29 +55,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 125px;
     }
     
     #headline {
-        font-size: 100px;//changfe
-        width: 1000px; //ch
-        margin-right: 300px; //ch
+        font-size: 30px;//changfe
+        //width: 1000px; //ch
+        //margin-right: 300px; //ch
 
         
-        height: 300px;
+        //height: 300px;
     }
     
     
     input{
-        height: 100px;
-        width: 500px;
-        font-size: 50px;
-    }
-    
-    button{
-        width: 750px; //ch
-        height: 200px; //ch
-        margin-right: 100px;
-        font-size: 100px; //ch
+        height: 50px;
+        width: 300px;
+        font-size: 25px;
     }
     
     
