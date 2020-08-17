@@ -1,114 +1,82 @@
-body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+@import "site_rules.scss";
+//change is a marker used to note changes from site_rules
+
+@media(min-width: 0px) and (max-width: 599px){
+    .results{
+        width: 400px; //change
+        height: 500px;
+        margin-left: 100px; //change
+    
+    }
+    #app{
+        grid-auto-rows: minmax(50px, 250px, 50px auto); //change
+        /* grid-template-columns:  */
+        width: 550px; //change
+    }
+    
+    .holder{
+        justify-content: center;
+        margin-left: 100px; //change
+        margin-right: 100px;
+        width: 400px; //change
+    }
+            
 }
+@media(min-width: 600px) and (max-width: 1100px){   
+    .results{
+        width: 700px;
+        height: 750px;
+        margin-left: 150px;
+        margin-right: 120px;
+        font-size: 30px; 
+    
+    }
+    #app{
+        grid-auto-rows: 180px 180px 190px;
+        /* grid-template-columns:  */
+        justify-content: space-evenly;
+        margin-left: 100px; //chnahe 
+        font-size: 24px;
+    }
+    
+    .holder{
+        justify-content: center;
+        border: 10px dashed orange;
+        height: 200px;
+        width:750px;
+        margin-left: 100px; //change
+        
+        margin-right: 200px;
+    }
+    
+    .button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #headline {
+        font-size: 100px;//changfe
+        width: 1000px; //ch
+        margin-right: 300px; //ch
 
-#app{
-    display: grid;
-    grid-auto-rows: minmax(25px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    border: 2px solid black;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-
-.holder{
-
-}
-
-.entry{
-    background: rgba(59, 74, 107, .4);
-}
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
-}
-
-.headline {
-
-}
-.title{
-
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
-}
-
-input{
-    display:block;
-    height: 40px;
-    width: 300px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-button{
-    width: 400px;
-    height: 60px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-    position: bottom;
-}
-h1{
-    font-size: 36px;
-}
-
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    border: 2px solid black;
-    font-family: 'Oswald', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+        
+        height: 300px;
+    }
+    
+    
+    input{
+        height: 100px;
+        width: 500px;
+        font-size: 50px;
+    }
+    
+    button{
+        width: 750px; //ch
+        height: 200px; //ch
+        margin-right: 100px;
+        font-size: 100px; //ch
+    }
+    
+    
+}    

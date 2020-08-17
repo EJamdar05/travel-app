@@ -5,6 +5,7 @@ projectData = {};
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fetch = require('node-fetch');
 //to go through the data
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -39,6 +40,7 @@ function addData(req, res){
         country: req.body.country,
         date: req.body.date,
         temp: req.body.temp,
+        image: req.body.image,
     }
     projectData = newEntry;
     res.send(projectData);
