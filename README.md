@@ -16,5 +16,6 @@ The APIs used to create the data are the following:
 * GeoCitiesAPI (Long and Lat data of locality)
 * WeatherBitAPI (sky conditions and temperature)
 * PixelBayAPI (pictures of the city)
+
 Credit also goes to the Udacity team as this project was built on top of the FrontEndWebDev 
 starter code from the starter code (from WeatherJournal).
