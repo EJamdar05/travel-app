@@ -46,4 +46,3 @@ function addData(req, res){
     res.send(projectData);
     console.log(projectData);
 }
-export { serverUp } 

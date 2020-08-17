@@ -5,10 +5,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/client/index.js',
     target: 'node',
+    externals: [nodeExternals()],
     mode: 'production',
     output: {
         libraryTarget: 'var',
